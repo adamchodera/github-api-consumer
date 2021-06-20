@@ -1,8 +1,5 @@
 package pl.adamchodera.githubconsumer.data
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
-import pl.adamchodera.githubconsumer.data.model.RepoResponse
 import pl.adamchodera.githubconsumer.data.source.remote.GitHubApiService
 import javax.inject.Inject
 
@@ -11,8 +8,9 @@ import javax.inject.Inject
  */
 class DefaultGitHubRepository @Inject constructor(
     private val gitHubApiService: GitHubApiService,
-    private val ioDispatcher: CoroutineDispatcher
+    private val repositoryMapper: RepositoryMapper
 ) {
 
-    suspend fun getPublicReposForUser(userName: String) = gitHubApiService.listRepos(userName)
+    suspend fun getPublicReposForUser(userName: String) =
+        gitHubApiService.listRepos(userName)?.map { repositoryMapper.transform(it) }
 }

@@ -1,6 +1,6 @@
 package pl.adamchodera.githubconsumer.data.source.remote
 
-import pl.adamchodera.githubconsumer.data.model.RepoResponse
+import pl.adamchodera.githubconsumer.data.model.api.RepositoryResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -10,5 +10,5 @@ import retrofit2.http.Path
 interface GitHubApiService {
 
     @GET("users/{user}/repos")
-    suspend fun listRepos(@Path("user") user: String?): List<RepoResponse?>?
+    suspend fun listRepos(@Path("user") user: String?): List<RepositoryResponse?>?
 }
