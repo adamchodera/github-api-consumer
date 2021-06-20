@@ -8,6 +8,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 import pl.adamchodera.githubconsumer.GitHubApp
 import pl.adamchodera.githubconsumer.di.module.ApplicationModule
 import pl.adamchodera.githubconsumer.di.module.MainActivityModule
+import pl.adamchodera.githubconsumer.di.module.RepositoriesListModule
 
 import javax.inject.Singleton
 
@@ -19,7 +20,8 @@ import javax.inject.Singleton
     modules = [
         ApplicationModule::class,
         AndroidSupportInjectionModule::class,
-        MainActivityModule::class
+        MainActivityModule::class,
+        RepositoriesListModule::class,
     ]
 )
 interface ApplicationComponent : AndroidInjector<GitHubApp> {
