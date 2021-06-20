@@ -13,7 +13,7 @@ interface GitHubApiService {
     @GET("users/{user}/repos")
     suspend fun listRepos(@Path("user") user: String?): List<RepositoryResponse?>?
 
-    @GET("users/{user}/repos/{repositoryName}")
+    @GET("repos/{user}/{repositoryName}/commits")
     suspend fun listCommits(
         @Path("user") user: String?,
         @Path("repositoryName") repositoryName: String?

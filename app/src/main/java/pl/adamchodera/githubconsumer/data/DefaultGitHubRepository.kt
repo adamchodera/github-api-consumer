@@ -1,6 +1,7 @@
 package pl.adamchodera.githubconsumer.data
 
 import pl.adamchodera.githubconsumer.data.source.remote.GitHubApiService
+import java.lang.Exception
 import javax.inject.Inject
 
 /**
@@ -8,13 +9,24 @@ import javax.inject.Inject
  */
 class DefaultGitHubRepository @Inject constructor(
     private val gitHubApiService: GitHubApiService,
-    private val repositoryMapper: RepositoryMapper
+    private val repositoryMapper: RepositoryMapper,
     private val commitMapper: CommitMapper
 ) {
 
     suspend fun getPublicReposForUser(userName: String) =
-        gitHubApiService.listRepos(userName)?.map { repositoryMapper.transform(it) }
+        try {
+            gitHubApiService.listRepos(userName)?.map { repositoryMapper.transform(it) }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            listOf()
+        }
 
     suspend fun getCommitsForUserRepository(userName: String, repositoryName: String) =
-        gitHubApiService.listCommits(userName, repositoryName)?.map { commitMapper.transform(it) }
+        try {
+            gitHubApiService.listCommits(userName, repositoryName)
+                ?.map { commitMapper.transform(it) }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            listOf()
+        }
 }
