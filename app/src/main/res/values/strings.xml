@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GitHub API consumer</string>
+    <string name="chart_bar_commits">%s commits</string>
 </resources>

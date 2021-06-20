@@ -16,10 +16,6 @@ import pl.adamchodera.githubconsumer.ui.BaseFragment
  */
 class RepositoryListFragment : BaseFragment(), RepositoryListAdapter.RepositoryClickedListener {
 
-    companion object {
-        fun newInstance() = RepositoryListFragment()
-    }
-
     private val mainViewModel by viewModels<RepositoryListViewModel> { viewModelFactory }
     private val repositoryListAdapter = RepositoryListAdapter(this)
 

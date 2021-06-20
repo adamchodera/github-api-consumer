@@ -16,7 +16,7 @@ import pl.adamchodera.githubconsumer.ui.BaseFragment
 class RepositoryDetailsFragment : BaseFragment() {
 
     private val repositoryDetailsViewModel by viewModels<RepositoryDetailsViewModel> { viewModelFactory }
-    val args: RepositoryDetailsFragmentArgs by navArgs()
+    private val args: RepositoryDetailsFragmentArgs by navArgs()
 
     private val commitListAdapter = CommitListAdapter()
 
@@ -32,6 +32,7 @@ class RepositoryDetailsFragment : BaseFragment() {
                 lifecycleOwner = viewLifecycleOwner
                 adapter = commitListAdapter
             }
+        viewDataBinding.chartView.onLifecycleOwnerAttached(viewLifecycleOwner)
         return viewDataBinding.root
     }
 
