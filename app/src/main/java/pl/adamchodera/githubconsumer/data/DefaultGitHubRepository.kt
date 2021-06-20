@@ -9,8 +9,12 @@ import javax.inject.Inject
 class DefaultGitHubRepository @Inject constructor(
     private val gitHubApiService: GitHubApiService,
     private val repositoryMapper: RepositoryMapper
+    private val commitMapper: CommitMapper
 ) {
 
     suspend fun getPublicReposForUser(userName: String) =
         gitHubApiService.listRepos(userName)?.map { repositoryMapper.transform(it) }
+
+    suspend fun getCommitsForUserRepository(userName: String, repositoryName: String) =
+        gitHubApiService.listCommits(userName, repositoryName)?.map { commitMapper.transform(it) }
 }
