@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import pl.adamchodera.githubconsumer.R
 import pl.adamchodera.githubconsumer.ui.BaseFragment
 
@@ -19,17 +17,11 @@ class MainFragment : BaseFragment() {
         fun newInstance() = MainFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private val mainViewModel by viewModels<MainViewModel> { viewModelFactory }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = inflater.inflate(R.layout.main_fragment, container, false)
 
 }

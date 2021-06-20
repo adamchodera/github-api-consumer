@@ -1,10 +1,10 @@
 package pl.adamchodera.githubconsumer
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import dagger.android.support.DaggerAppCompatActivity
 import pl.adamchodera.githubconsumer.ui.main.MainFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
