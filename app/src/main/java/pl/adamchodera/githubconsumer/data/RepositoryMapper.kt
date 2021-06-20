@@ -10,6 +10,6 @@ import javax.inject.Inject
 class RepositoryMapper @Inject constructor() {
 
     fun transform(response: RepositoryResponse?): Repository =
-        Repository(response?.id, response?.fullName, response?.description)
+        Repository(response?.id, response?.name, response?.description)
 
 }

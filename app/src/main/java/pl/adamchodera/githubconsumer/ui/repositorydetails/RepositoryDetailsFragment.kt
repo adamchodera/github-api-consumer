@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import pl.adamchodera.githubconsumer.databinding.RepositoryDetailsFragmentBinding
-import pl.adamchodera.githubconsumer.databinding.RepositoryListFragmentBinding
 import pl.adamchodera.githubconsumer.ui.BaseFragment
 
 /**
@@ -15,11 +15,9 @@ import pl.adamchodera.githubconsumer.ui.BaseFragment
  */
 class RepositoryDetailsFragment : BaseFragment() {
 
-    companion object {
-        fun newInstance() = RepositoryDetailsFragment()
-    }
+    private val repositoryDetailsViewModel by viewModels<RepositoryDetailsViewModel> { viewModelFactory }
+    val args: RepositoryDetailsFragmentArgs by navArgs()
 
-    private val mainViewModel by viewModels<RepositoryDetailsViewModel> { viewModelFactory }
     private val commitListAdapter = CommitListAdapter()
 
     private lateinit var viewDataBinding: RepositoryDetailsFragmentBinding
@@ -30,7 +28,7 @@ class RepositoryDetailsFragment : BaseFragment() {
     ): View {
         viewDataBinding = RepositoryDetailsFragmentBinding.inflate(inflater, container, false)
             .apply {
-                viewModel = mainViewModel
+                viewModel = repositoryDetailsViewModel
                 lifecycleOwner = viewLifecycleOwner
                 adapter = commitListAdapter
             }
@@ -40,7 +38,7 @@ class RepositoryDetailsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainViewModel.commits.observe(viewLifecycleOwner, Observer {
+        repositoryDetailsViewModel.commits(args.repository).observe(viewLifecycleOwner, Observer {
             it.let(commitListAdapter::submitList)
         })
     }
