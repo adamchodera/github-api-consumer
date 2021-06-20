@@ -19,7 +19,7 @@ class RepositoryDetailsViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun commits(repository: Repository): LiveData<List<Commit?>?> = liveData(ioDispatcher) {
-        val repositoryName = repository.name ?: GitHubApiConstants.GITHUB_REPOSITORY_NAME
+        val repositoryName = repository.name ?: GitHubApiConstants.DEFAULT_GITHUB_REPOSITORY_NAME
         emit(
             defaultGitHubRepository.getCommitsForUserRepository(
                 GitHubApiConstants.GITHUB_USERNAME,

@@ -4,6 +4,7 @@ import pl.adamchodera.githubconsumer.data.model.api.CommitResponse
 import pl.adamchodera.githubconsumer.data.model.api.RepositoryResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  * Created by Adam Chodera on 20/06/2021.
@@ -11,7 +12,10 @@ import retrofit2.http.Path
 interface GitHubApiService {
 
     @GET("users/{user}/repos")
-    suspend fun listRepos(@Path("user") user: String?): List<RepositoryResponse?>?
+    suspend fun listRepos(
+        @Path("user") user: String?,
+        @Query("sort") sort: String?
+    ): List<RepositoryResponse?>?
 
     @GET("repos/{user}/{repositoryName}/commits")
     suspend fun listCommits(

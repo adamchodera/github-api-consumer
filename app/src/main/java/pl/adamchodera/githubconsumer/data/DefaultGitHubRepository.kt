@@ -1,5 +1,6 @@
 package pl.adamchodera.githubconsumer.data
 
+import pl.adamchodera.githubconsumer.data.source.remote.GitHubApiConstants
 import pl.adamchodera.githubconsumer.data.source.remote.GitHubApiService
 import java.lang.Exception
 import javax.inject.Inject
@@ -15,7 +16,8 @@ class DefaultGitHubRepository @Inject constructor(
 
     suspend fun getPublicReposForUser(userName: String) =
         try {
-            gitHubApiService.listRepos(userName)?.map { repositoryMapper.transform(it) }
+            gitHubApiService.listRepos(userName, GitHubApiConstants.REPOSITORY_LIST_SORT_ORDER)
+                ?.map { repositoryMapper.transform(it) }
         } catch (e: Exception) {
             e.printStackTrace()
             listOf()

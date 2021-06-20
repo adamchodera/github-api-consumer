@@ -6,5 +6,6 @@ package pl.adamchodera.githubconsumer.data.source.remote
 object GitHubApiConstants {
     const val BASE_API_URL = "https://api.github.com/"
     const val GITHUB_USERNAME = "adamchodera"
-    const val GITHUB_REPOSITORY_NAME = "github-api-consumer"
+    const val DEFAULT_GITHUB_REPOSITORY_NAME = "github-api-consumer"
+    const val REPOSITORY_LIST_SORT_ORDER = "pushed"
 }
