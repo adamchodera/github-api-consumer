@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         tools:background="@color/black"
         android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
         android:padding="8dp">
 
         <androidx.appcompat.widget.AppCompatTextView
