@@ -4,6 +4,7 @@ A basic Android app that shows my public repositories and then retrieves their r
 ## Architecture
 - MVVM
 - Single Activity
+- Clean Architecture
 
 ## Libraries Used
 - **Android Jetpack:**
@@ -11,13 +12,13 @@ A basic Android app that shows my public repositories and then retrieves their r
 - **Retrofit**
 - **Dagger2**
 
-## Improvements:
-- Implement "Task 4" - fetch data via GraphQL, more: [https://docs.github.com/en/graphql/overview/about-the-graphql-api]
+## TODO:
 - Implement pagination when fetching repositories list 
 [https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user]
+- Finish representing number of commits
 - A new domain layer that uses UseCases for business logic
-- Implement unit tests
-- Implement UI test
+- Implement more unit tests
+- Add UI test (Espresso)
 - Wrapping API Responses and error handling
 - CI/CD
 - LiveData Adapter for Retrofit [https://gist.github.com/AkshayChordiya/15cfe7ca1842d6b959e77c04a073a98f]
