@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import pl.adamchodera.githubconsumer.data.model.Repository
 import pl.adamchodera.githubconsumer.databinding.RepositoryListFragmentBinding
 import pl.adamchodera.githubconsumer.ui.BaseFragment
@@ -14,9 +15,10 @@ import pl.adamchodera.githubconsumer.ui.BaseFragment
 /**
  * Created by Adam Chodera on 20/06/2021.
  */
+@AndroidEntryPoint
 class RepositoryListFragment : BaseFragment(), RepositoryListAdapter.RepositoryClickedListener {
 
-    private val mainViewModel by viewModels<RepositoryListViewModel> { viewModelFactory }
+    private val mainViewModel by viewModels<RepositoryListViewModel>()
     private val repositoryListAdapter = RepositoryListAdapter(this)
 
     private lateinit var viewDataBinding: RepositoryListFragmentBinding

@@ -10,7 +10,7 @@ A basic Android app that shows my public repositories and then retrieves their r
 - **Android Jetpack:**
   ViewModel, LiveData, Data Binding, RecyclerView, Fragments, Navigation
 - **Retrofit**
-- **Dagger2**
+- **Hilt**
 
 ## TODO:
 - Implement pagination when fetching repositories list 
@@ -28,6 +28,5 @@ A basic Android app that shows my public repositories and then retrieves their r
 
 ## Things I would do differently:
 - Create views via Jetpack Compose
-- Use Hilt instead of Dagger
 - Extract model to the separate module if the project's full scope is bigger than the assignment itself
 - Use Kotlin DSL to write custom build code for eg. dependencies across all the modules

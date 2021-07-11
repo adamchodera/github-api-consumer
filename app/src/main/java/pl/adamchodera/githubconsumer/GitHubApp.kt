@@ -1,11 +1,7 @@
 package pl.adamchodera.githubconsumer
 
-import dagger.android.AndroidInjector
-import dagger.android.support.DaggerApplication
-import pl.adamchodera.githubconsumer.di.DaggerApplicationComponent
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class GitHubApp : DaggerApplication() {
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerApplicationComponent.factory().create(applicationContext)
-    }
-}
+@HiltAndroidApp
+class GitHubApp : Application()

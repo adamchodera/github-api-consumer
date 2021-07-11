@@ -7,15 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import pl.adamchodera.githubconsumer.databinding.RepositoryDetailsFragmentBinding
 import pl.adamchodera.githubconsumer.ui.BaseFragment
 
 /**
  * Created by Adam Chodera on 20/06/2021.
  */
+@AndroidEntryPoint
 class RepositoryDetailsFragment : BaseFragment() {
 
-    private val repositoryDetailsViewModel by viewModels<RepositoryDetailsViewModel> { viewModelFactory }
+    private val repositoryDetailsViewModel by viewModels<RepositoryDetailsViewModel>()
     private val args: RepositoryDetailsFragmentArgs by navArgs()
 
     private val commitListAdapter = CommitListAdapter()
